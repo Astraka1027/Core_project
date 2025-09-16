@@ -1,3 +1,3 @@
-# Core
+# ETL Alerts Agent
 
-Core project repository
+ETL alerts agent project repository
