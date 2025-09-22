@@ -191,7 +191,7 @@ The Core system architecture positions BlastPoint to become an **AI-first organi
 ## Technical Contact
 For implementation questions or permission requests:
 - **Primary Contact**: Amber Straka (amber.straka@blastpoint.com)
-- **Technical Documentation**: Available in `/Users/amberstraka/Desktop/CORE/`
+- **Technical Documentation**: Available in 'https://github.com/Astraka1027/Core_project`
 - **API Endpoint**: `https://web-production-1f66.up.railway.app`
 
 ---
