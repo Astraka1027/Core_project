@@ -1,0 +1,117 @@
+openapi: 3.0.0
+info:
+  title: Google Drive ChatGPT Connector
+  description: FastAPI service that connects ChatGPT to Google Drive for file access
+  version: 1.0.0
+servers:
+  - url: https://your-server-domain.com
+    description: Production server
+paths:
+  /files:
+    get:
+      summary: List all files in Google Drive folder
+      description: Returns a list of all files with their IDs and names from the configured Google Drive folder
+      operationId: listFiles
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: Google Drive file ID
+                    name:
+                      type: string
+                      description: File name
+                  required:
+                    - id
+                    - name
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    description: Error message
+
+  /file/{file_id}:
+    get:
+      summary: Get file content as text
+      description: Retrieves the content of a specific file and returns it as plain text. Supports Google Docs, Sheets, Slides, PDFs, and text files.
+      operationId: getFileContent
+      parameters:
+        - name: file_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Google Drive file ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Google Drive file ID
+                  name:
+                    type: string
+                    description: File name
+                  content:
+                    type: string
+                    description: File content as plain text
+                required:
+                  - id
+                  - name
+                  - content
+        '400':
+          description: Bad request (unsupported file type, etc.)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    description: Error message
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    description: Error message
+
+  /health:
+    get:
+      summary: Health check
+      description: Returns the health status of the service
+      operationId: healthCheck
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Health status
+                  service:
+                    type: string
+                    description: Service name
