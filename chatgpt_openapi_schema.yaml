@@ -1,11 +1,11 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: Google Drive ChatGPT Connector
   description: FastAPI service that connects ChatGPT to Google Drive for file access
   version: 1.0.0
 servers:
-  - url: https://your-server-domain.com
-    description: Production server
+  - url: https://web-production-1f66.up.railway.app
+    description: Core API on Railway
 paths:
   /files:
     get:
